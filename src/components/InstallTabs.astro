@@ -1,0 +1,135 @@
+---
+// Three install methods. WAI-ARIA tablist semantics so arrow-key navigation
+// works for keyboard users. The tab-switch and localStorage persistence live
+// in the inline <script> at the bottom — Astro static + a tiny island.
+
+import { VERSION } from "../data/version.ts";
+
+const tabs = [
+  { id: "curl", label: "curl", cmd: `curl -fsSL https://llamastash.cli.rs/install.sh | sh` },
+  { id: "brew", label: "Homebrew", cmd: `brew install llamastash/llamastash/llamastash` },
+  { id: "cargo", label: "Cargo", cmd: `cargo install llamastash` },
+];
+---
+
+<div class="not-prose w-full max-w-2xl">
+  <div
+    role="tablist"
+    aria-label="Install methods"
+    class="flex gap-1 border-b border-catppuccin-surface0 mb-3"
+  >
+    {tabs.map((tab, i) => (
+      <button
+        type="button"
+        role="tab"
+        id={`tab-${tab.id}`}
+        aria-controls={`panel-${tab.id}`}
+        aria-selected={i === 0 ? "true" : "false"}
+        tabindex={i === 0 ? 0 : -1}
+        data-tab={tab.id}
+        class="px-4 py-2 -mb-px border-b-2 border-transparent text-sm font-medium text-catppuccin-subtext0 hover:text-catppuccin-text aria-selected:border-catppuccin-mauve aria-selected:text-catppuccin-text transition"
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  {tabs.map((tab, i) => (
+    <div
+      role="tabpanel"
+      id={`panel-${tab.id}`}
+      aria-labelledby={`tab-${tab.id}`}
+      hidden={i !== 0}
+      data-panel={tab.id}
+    >
+      <div class="group flex items-center justify-between rounded-md bg-catppuccin-mantle border border-catppuccin-surface0 px-4 py-3 font-mono text-sm">
+        <code class="text-catppuccin-text overflow-x-auto whitespace-pre">{tab.cmd}</code>
+        <button
+          type="button"
+          data-copy={tab.cmd}
+          aria-label={`Copy ${tab.label} command`}
+          class="ml-3 shrink-0 rounded border border-catppuccin-surface1 px-2 py-1 text-xs text-catppuccin-subtext0 hover:text-catppuccin-text hover:border-catppuccin-mauve transition opacity-0 group-hover:opacity-100 focus:opacity-100"
+        >
+          copy
+        </button>
+      </div>
+    </div>
+  ))}
+
+  <p class="mt-3 text-xs text-catppuccin-overlay1 font-mono">
+    Latest stable: v{VERSION}. macOS + Linux (x86_64, aarch64).
+  </p>
+</div>
+
+<script>
+  // Tab switching with localStorage persistence + arrow-key navigation.
+  const STORAGE_KEY = "preferred-install";
+  const tablists = document.querySelectorAll<HTMLElement>('[role="tablist"]');
+
+  tablists.forEach((tablist) => {
+    const tabs = Array.from(
+      tablist.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    );
+    const panels = new Map<string, HTMLElement>();
+    tabs.forEach((t) => {
+      const id = t.dataset.tab!;
+      const panel = document.querySelector<HTMLElement>(`[data-panel="${id}"]`);
+      if (panel) panels.set(id, panel);
+    });
+
+    function activate(id: string) {
+      tabs.forEach((t) => {
+        const selected = t.dataset.tab === id;
+        t.setAttribute("aria-selected", String(selected));
+        t.tabIndex = selected ? 0 : -1;
+        if (selected) t.focus({ preventScroll: true });
+      });
+      panels.forEach((panel, panelId) => {
+        panel.hidden = panelId !== id;
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, id);
+      } catch {}
+    }
+
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener("click", () => activate(tab.dataset.tab!));
+      tab.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+          event.preventDefault();
+          const dir = event.key === "ArrowRight" ? 1 : -1;
+          const next = tabs[(idx + dir + tabs.length) % tabs.length];
+          activate(next.dataset.tab!);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          activate(tabs[0].dataset.tab!);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          activate(tabs[tabs.length - 1].dataset.tab!);
+        }
+      });
+    });
+
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && panels.has(saved)) activate(saved);
+    } catch {}
+  });
+
+  // Copy-to-clipboard for the visible command.
+  document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copy ?? "";
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = "copied";
+        setTimeout(() => {
+          btn.textContent = orig;
+        }, 1200);
+      } catch {
+        // Clipboard API blocked (file://, insecure context); fall back silently.
+      }
+    });
+  });
+</script>

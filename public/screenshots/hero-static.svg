@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">
+  <rect width="800" height="500" fill="#1e2030"/>
+  <text x="24" y="40" fill="#c6a0f6">▝ llamastash</text>
+  <text x="138" y="40" fill="#a5adcb">v0.0.1</text>
+  <text x="196" y="40" fill="#8087a2">~/models</text>
+  <line x1="24" y1="56" x2="776" y2="56" stroke="#6e738d" stroke-width="1"/>
+  <text x="24" y="100" fill="#a6da95">  qwen2.5-coder-7b-q4_k_m.gguf</text>
+  <text x="380" y="100" fill="#cad3f5">4.4 GB    Q4_K_M    fits VRAM</text>
+  <text x="24" y="124" fill="#cad3f5">  llama-3.1-8b-instruct-q5_k_m.gguf</text>
+  <text x="380" y="124" fill="#cad3f5">5.7 GB    Q5_K_M    fits VRAM</text>
+  <text x="24" y="148" fill="#cad3f5">  phi-4-q8_0.gguf</text>
+  <text x="380" y="148" fill="#cad3f5">15.6 GB   Q8_0      fits unified</text>
+  <text x="24" y="172" fill="#cad3f5">  mistral-small-22b-q4_k_m.gguf</text>
+  <text x="380" y="172" fill="#cad3f5">13.3 GB   Q4_K_M    fits unified</text>
+  <text x="24" y="196" fill="#f5a97f">  deepseek-r1-distill-32b-q4_k_m.gguf</text>
+  <text x="380" y="196" fill="#cad3f5">19.9 GB   Q4_K_M    spills to RAM</text>
+  <line x1="24" y1="240" x2="776" y2="240" stroke="#363a4f"/>
+  <text x="24" y="270" fill="#8aadf4">[⏎] launch   [/] search   [d] doctor   [p] pull   [q] quit</text>
+  <text x="24" y="320" fill="#a6da95">✓</text>
+  <text x="44" y="320" fill="#cad3f5">launching qwen2.5-coder-7b on http://127.0.0.1:8080</text>
+  <text x="24" y="346" fill="#a6da95">✓</text>
+  <text x="44" y="346" fill="#cad3f5">server up. press [c] to copy curl, [esc] to detach.</text>
+  <text x="24" y="460" fill="#6e738d">┌─ resources ─────────────────────────────────────────────────────────────────┐</text>
+  <text x="24" y="476" fill="#cad3f5">│ vram  4.4 / 16 GB   ram  5.1 / 32 GB   ctx 4096   tps 38.2                  │</text>
+  <text x="24" y="492" fill="#6e738d">└─────────────────────────────────────────────────────────────────────────────┘</text>
+</svg>

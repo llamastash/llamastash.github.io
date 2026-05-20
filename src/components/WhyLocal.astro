@@ -1,0 +1,52 @@
+---
+const points = [
+  {
+    title: "Your data, your machine",
+    body:
+      "Prompts, context windows, completions — all stay in RAM on the box you're sitting at. There is no third party in the chain who could log them, leak them, or change their mind about retention policy tomorrow.",
+  },
+  {
+    title: "No surprise bills",
+    body:
+      "Local inference is free at the margin. The 10,000-token brainstorm at 2 a.m. costs the same as 10,000 tokens at noon: nothing. Sunsetting a model is your decision, not a vendor's.",
+  },
+  {
+    title: "Offline by default",
+    body:
+      "Once a model is on disk, it works on a plane, in a SCIF, in a coffee shop with sketchy WiFi. The CLI surfaces it the same way every time — no cold-start latency from a remote API.",
+  },
+  {
+    title: "Composable with the tools you already use",
+    body:
+      "llamastash exposes a local OpenAI-compatible endpoint (via llama-server). Anything that speaks that API — your editor, your shell function, your homegrown script — works with zero glue.",
+  },
+];
+---
+
+<section id="why-local" class="border-t border-catppuccin-surface0 bg-catppuccin-mantle/40">
+  <div class="mx-auto max-w-6xl px-6 py-24">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-catppuccin-green mb-3">Why local</p>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-catppuccin-text">
+          The cloud is great until it isn't.
+        </h2>
+        <p class="mt-6 text-catppuccin-subtext1 leading-relaxed">
+          Local models are catching up faster than most people realize. A modern laptop with 16+ GB of unified memory or a mid-range desktop GPU runs models that genuinely earn their keep — for code, writing, brainstorming, and tool-using agents.
+        </p>
+        <p class="mt-4 text-catppuccin-subtext1 leading-relaxed">
+          llamastash exists to make that path low-friction: one binary, sensible defaults, and a TUI that respects your time.
+        </p>
+      </div>
+
+      <ul class="space-y-6">
+        {points.map((p) => (
+          <li class="rounded-lg border border-catppuccin-surface0 bg-catppuccin-base p-6">
+            <h3 class="font-semibold text-catppuccin-text">{p.title}</h3>
+            <p class="mt-2 text-sm text-catppuccin-subtext1 leading-relaxed">{p.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

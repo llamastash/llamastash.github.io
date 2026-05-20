@@ -1,0 +1,25 @@
+---
+import { VERSION } from "../data/version.ts";
+---
+
+<header class="sticky top-0 z-50 backdrop-blur bg-catppuccin-base/80 border-b border-catppuccin-surface0">
+  <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2 font-mono text-lg text-catppuccin-text">
+      <span class="inline-block h-2 w-2 rounded-full bg-catppuccin-mauve"></span>
+      <span class="font-semibold">llamastash</span>
+      <span class="text-catppuccin-overlay1 text-sm tracking-tight">v{VERSION}</span>
+    </a>
+    <div class="flex items-center gap-6 text-sm">
+      <a href="#features" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition">Features</a>
+      <a href="#why-local" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition hidden sm:inline">Why local</a>
+      <a href="#faq" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition hidden sm:inline">FAQ</a>
+      <a
+        href="https://github.com/llamastash/llamastash"
+        class="rounded-md border border-catppuccin-surface1 px-3 py-1.5 text-catppuccin-text hover:border-catppuccin-mauve hover:text-catppuccin-mauve transition"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,116 @@
+name: bump (manual)
+
+# Manual fallback for mirroring install.sh from a tagged release. The primary
+# path is llamastash/llamastash's release.yml, which clones this repo via
+# PAT and pushes a new install.sh + sidecar + version.ts directly on every
+# tag (kdash pattern). Use this workflow only when you need to hand-bump —
+# for example, after a release.yml site step failure where the tag's GH
+# Release is already published but the site copy is stale.
+#
+# Trust boundary: the SHA-256 verification below is the only thing standing
+# between a leaked GH_BUMP_TOKEN and a poisoned install.sh on
+# llamastash.cli.rs. Keep it self-contained, no third-party actions beyond
+# actions/checkout.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release tag (e.g. v0.2.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: resolve version
+        id: meta
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          tag="$INPUT_VERSION"
+
+          # Accept both bare "0.2.0" and tagged "v0.2.0" forms.
+          tag="v${tag#v}"
+
+          if ! printf '%s' "$tag" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$'; then
+            echo "::error::invalid tag: $tag"
+            exit 1
+          fi
+
+          version="${tag#v}"
+          released_at=$(date -u +%Y-%m-%d)
+
+          {
+            echo "tag=$tag"
+            echo "version=$version"
+            echo "released_at=$released_at"
+          } >>"$GITHUB_OUTPUT"
+
+      - name: fetch install.sh + sidecar
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+        run: |
+          set -euo pipefail
+          base="https://github.com/llamastash/llamastash/releases/download/${TAG}"
+          mkdir -p .stage
+          curl --fail --silent --show-error --location \
+               --output .stage/install.sh "${base}/install.sh"
+          curl --fail --silent --show-error --location \
+               --output .stage/install.sh.sha256 "${base}/install.sh.sha256"
+
+      - name: verify sha256
+        run: |
+          set -euo pipefail
+          cd .stage
+
+          # GH Releases ship the sidecar in "shasum -a 256" output format:
+          #   <hex>  <filename>
+          # `sha256sum -c` and `shasum -a 256 -c` both accept this format and
+          # exit non-zero on mismatch.
+          sha256sum -c install.sh.sha256
+
+      - name: commit verified mirror
+        env:
+          TAG: ${{ steps.meta.outputs.tag }}
+          VERSION: ${{ steps.meta.outputs.version }}
+          RELEASED_AT: ${{ steps.meta.outputs.released_at }}
+        run: |
+          set -euo pipefail
+
+          # Prepend a provenance comment so anyone reading the served file can
+          # see where it came from without consulting the bump workflow logs.
+          {
+            printf '# Source: github.com/llamastash/llamastash@%s/scripts/install.sh\n' "$TAG"
+            printf '# SHA-256 verified by .github/workflows/bump.yml on %s.\n' "$RELEASED_AT"
+            cat .stage/install.sh
+          } >public/install.sh
+          cp .stage/install.sh.sha256 public/install.sh.sha256
+
+          # Update the version data file consumed by the install-tab labels.
+          cat >src/data/version.ts <<EOF
+          // Bumped on every release by .github/workflows/bump.yml in response to a
+          // repository_dispatch event from the main repo. Do not edit by hand.
+
+          export const VERSION = "$VERSION";
+          export const TAG = "$TAG";
+          export const RELEASED_AT = "$RELEASED_AT";
+          EOF
+
+          rm -rf .stage
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- public/install.sh public/install.sh.sha256 src/data/version.ts; then
+            echo "install.sh + version already current for $TAG; nothing to commit"
+            exit 0
+          fi
+          git add public/install.sh public/install.sh.sha256 src/data/version.ts
+          git commit -m "chore(release): mirror install.sh for $TAG"
+          git push
