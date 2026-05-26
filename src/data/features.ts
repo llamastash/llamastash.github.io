@@ -10,39 +10,39 @@ export interface Feature {
 
 export const features: Feature[] = [
   {
-    title: "One command to launch",
+    title: "Zero-to-chat init wizard",
     body:
-      "Pick a model from your library, hit Enter, and llamastash starts a llama.cpp server with sane defaults. Memory, port, context length — all auto-tuned for your hardware.",
+      "Run `llamastash init` once and it handles the annoying first-run work: detect hardware, install the right llama-server build, download a starter GGUF, write config, and smoke-launch it.",
     accent: "mauve",
   },
   {
-    title: "Local-first, always",
+    title: "Scans what you already have",
     body:
-      "Every byte stays on your machine. No telemetry, no cloud calls, no third-party SDKs. Inspect every connection — llamastash binds to localhost and refuses anything else.",
+      "Walks HuggingFace, Ollama, and LM Studio caches plus user paths. Reads GGUF metadata, dedupes symlinks and split files, and watches the catalog for new models without a restart.",
     accent: "green",
   },
   {
-    title: "Keyboard-driven",
+    title: "One binary, three roles",
     body:
-      "Vim-style navigation, tabbed views, fuzzy model search. Mouse optional. Built for the same audience that uses k9s, lazygit, btop — you already know the shortcuts.",
+      "The TUI, CLI, and daemon are the same binary. The daemon auto-spawns when needed, running models survive UI exit, and the same launch primitives show up in both human and agent workflows.",
     accent: "blue",
   },
   {
-    title: "GGUF-aware",
+    title: "Hardware-aware launches",
     body:
-      "Reads model metadata directly from your GGUF files: quantization, context window, parameter count, license. Sortable, searchable, no manual tagging.",
+      "Built-in arch defaults, per-model ports, health-probed lifecycle, and intelligent context auto-fit mean fewer bad launches and fewer manual llama.cpp flags for every machine you touch.",
     accent: "peach",
   },
   {
-    title: "Hardware-aware",
+    title: "OpenAI + Ollama proxy",
     body:
-      "Detects your VRAM, RAM, CPU, and Metal/CUDA/Vulkan availability. Recommends the right model for the box you're on and warns before you OOM yourself.",
+      "A built-in localhost proxy on `127.0.0.1:11435/v1` routes by model name, auto-starts the model you ask for, and can impersonate Ollama on `11434` when you need drop-in compatibility.",
     accent: "yellow",
   },
   {
-    title: "Zero config",
+    title: "Agent-ready CLI",
     body:
-      "Works out of the box on macOS and Linux. An interactive init wizard handles the first run; doctor diagnoses anything that goes sideways later.",
+      "Stable `--json` output, documented exit codes, `pull` and `recommend` subcommands, plus an installable AgentSkills bundle for Claude Code, OpenClaw, OpenCode, and other harnesses.",
     accent: "teal",
   },
 ];

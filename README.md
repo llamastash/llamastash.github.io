@@ -34,4 +34,4 @@ The site serves `/install.sh` as a SHA-256-verified mirror of the install script
 
 ## Reporting issues
 
-Site bugs (typos, layout, broken links) belong here. Bugs in llamastash itself belong in [llamastash/llamastash](https://github.com/llamastash/llamastash/issues).
+Site bugs (typos, layout, broken links) belong here. Bugs in LlamaStash itself belong in [llamastash/llamastash](https://github.com/llamastash/llamastash/issues).

@@ -6,5 +6,5 @@
 #
 # Until the first release lands, follow:
 #   https://github.com/llamastash/llamastash
-echo "llamastash: no release yet — see https://github.com/llamastash/llamastash" >&2
+echo "LlamaStash: no release yet — see https://github.com/llamastash/llamastash" >&2
 exit 1

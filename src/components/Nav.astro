@@ -3,13 +3,21 @@ import { VERSION } from "../data/version.ts";
 ---
 
 <header class="sticky top-0 z-50 backdrop-blur bg-catppuccin-base/80 border-b border-catppuccin-surface0">
-  <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-    <a href="/" class="flex items-center gap-2 font-mono text-lg text-catppuccin-text">
-      <span class="inline-block h-2 w-2 rounded-full bg-catppuccin-mauve"></span>
-      <span class="font-semibold">llamastash</span>
+  <nav class="mx-auto max-w-6xl flex items-center justify-between px-6 py-2">
+    <a href="/" class="flex items-center gap-3.5 font-mono text-3xl text-catppuccin-text">
+      <img
+        src="/logo-nav.png"
+        alt=""
+        aria-hidden="true"
+        class="h-12 w-12 rounded-lg border border-catppuccin-surface0 bg-catppuccin-mantle p-0.5 object-contain"
+        width="44"
+        height="44"
+      />
+      <span class="font-semibold">LlamaStash</span>
       <span class="text-catppuccin-overlay1 text-sm tracking-tight">v{VERSION}</span>
     </a>
     <div class="flex items-center gap-6 text-sm">
+      <a href="#install" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition">Install</a>
       <a href="#features" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition">Features</a>
       <a href="#why-local" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition hidden sm:inline">Why local</a>
       <a href="#faq" class="text-catppuccin-subtext0 hover:text-catppuccin-text transition hidden sm:inline">FAQ</a>
