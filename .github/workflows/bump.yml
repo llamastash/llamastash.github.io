@@ -9,7 +9,7 @@ name: bump (manual)
 #
 # Trust boundary: the SHA-256 verification below is the only thing standing
 # between a leaked GH_BUMP_TOKEN and a poisoned install.sh on
-# llamastash.cli.rs. Keep it self-contained, no third-party actions beyond
+# llamastash.dev. Keep it self-contained, no third-party actions beyond
 # actions/checkout.
 
 on:

@@ -1,6 +1,6 @@
 # llamastash.github.io
 
-Source for [llamastash.cli.rs](https://llamastash.cli.rs) — the marketing site for [llamastash](https://github.com/llamastash/llamastash).
+Source for [llamastash.dev](https://llamastash.dev) — the marketing site for [llamastash](https://github.com/llamastash/llamastash).
 
 ## Stack
 

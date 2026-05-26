@@ -59,10 +59,10 @@ body {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .demo-static {
-    display: none;
-  }
+/* Keep the static screenshot visible until the player actually mounts.
+   If the lazy import or player init fails, the hero still shows something. */
+.demo-static {
+  display: block;
 }
 
 /* FAQ accordion: hide the native disclosure triangle and use our own chevron. */

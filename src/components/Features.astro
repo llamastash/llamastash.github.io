@@ -11,6 +11,10 @@ const accentClass: Record<string, string> = {
   sky: "bg-catppuccin-sky/10 text-catppuccin-sky",
   lavender: "bg-catppuccin-lavender/10 text-catppuccin-lavender",
 };
+
+function splitInlineCode(text: string) {
+  return text.split(/(`[^`]+`)/g).filter(Boolean);
+}
 ---
 
 <section id="features" class="border-t border-catppuccin-surface0 bg-catppuccin-mantle/40">
@@ -32,7 +36,17 @@ const accentClass: Record<string, string> = {
             ✓
           </span>
           <h3 class="mt-4 text-lg font-semibold text-catppuccin-text">{f.title}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-catppuccin-subtext1">{f.body}</p>
+          <p class="mt-2 text-sm leading-relaxed text-catppuccin-subtext1">
+            {splitInlineCode(f.body).map((part) =>
+              part.startsWith("`") && part.endsWith("`") ? (
+                <code class="rounded bg-catppuccin-mantle px-1.5 py-0.5 font-mono text-[0.9em] text-catppuccin-text">
+                  {part.slice(1, -1)}
+                </code>
+              ) : (
+                part
+              ),
+            )}
+          </p>
         </li>
       ))}
     </ul>

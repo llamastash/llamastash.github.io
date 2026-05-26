@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://llamastash.cli.rs",
+  site: "https://llamastash.dev",
   output: "static",
   integrations: [
     tailwind({

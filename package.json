@@ -1,7 +1,7 @@
 {
   "name": "llamastash-site",
   "version": "0.0.0",
-  "description": "Marketing site for llamastash — https://llamastash.cli.rs",
+  "description": "Marketing site for llamastash — https://llamastash.dev",
   "type": "module",
   "private": true,
   "scripts": {
