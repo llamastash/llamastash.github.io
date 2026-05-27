@@ -29,7 +29,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Is the install script safe to pipe into sh?",
-    a: "The script is served from this site as a content-verified mirror of the asset published with each GitHub Release, with a SHA-256 sidecar verified at deploy time. If you want the most paranoid path, download it, read it, and run it yourself. Or skip the script entirely and use `cargo install llamastash --locked` or `brew install llamastash/llamastash/llamastash`.",
+    a: "The script is served from this site as a content-verified mirror of the asset published with each GitHub Release, with a SHA-256 sidecar verified at deploy time. If you want the most paranoid path, download it, read it, and run it yourself. Or skip the script entirely and use `cargo install llamastash` or `brew install llamastash/llamastash/llamastash`.",
   },
   {
     q: "Can I use LlamaStash with non-GGUF models?",
