@@ -1,6 +1,6 @@
-// Bumped on every release by the main repo's release.yml publish-site job
-// (direct clone+push, kdash pattern). Do not edit by hand.
+// Bumped on every release by .github/workflows/release.yml in the main
+// repo. Do not edit by hand.
 
 export const VERSION = "0.0.1";
-export const TAG = `v${VERSION}`;
-export const RELEASED_AT = "2026-05-20";
+export const TAG = "v0.0.1";
+export const RELEASED_AT = "2026-05-28";
