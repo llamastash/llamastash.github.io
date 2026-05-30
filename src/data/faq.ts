@@ -13,11 +13,11 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Does it send any data to a server?",
-    a: "Inference traffic stays on your machine. The main runtime surface is local-only: Unix-socket IPC for the daemon and a loopback-only proxy for OpenAI-compatible clients. `init`, `pull`, and parts of `doctor` do use the network when they need to download or verify artifacts, but LlamaStash itself has no telemetry or analytics pipeline.",
+    a: "Inference traffic stays on your machine. The main runtime surface is local-only: a bearer-token-authed 127.0.0.1 HTTP control plane for the daemon and a separate loopback-only proxy for OpenAI-compatible clients. `init`, `pull`, and parts of `doctor` do use the network when they need to download or verify artifacts, but LlamaStash itself has no telemetry or analytics pipeline.",
   },
   {
     q: "What platforms does it support?",
-    a: "macOS (Apple Silicon + Intel) and Linux (x86_64 + aarch64) are first-class. Windows is still on the roadmap; it is not part of the first release contract.",
+    a: "macOS (Apple Silicon + Intel), Linux (x86_64 + aarch64), and Windows 11 (x86_64) are first-class. aarch64-pc-windows-msvc on Windows is on the roadmap.",
   },
   {
     q: "Do I need llama.cpp installed already?",
@@ -33,7 +33,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Can I use LlamaStash with non-GGUF models?",
-    a: "Not in 0.0.1 — llama.cpp is the runtime, and llama.cpp consumes GGUF. Other runtimes (vLLM, mlx-lm) are on the roadmap as opt-in backends once the GGUF + llama.cpp path is solid.",
+    a: "Not in 0.0.2 — llama.cpp is the runtime, and llama.cpp consumes GGUF. Other runtimes (vLLM, mlx-lm) are on the roadmap as opt-in backends once the GGUF + llama.cpp path is solid.",
   },
   {
     q: "Can I point agents or editors at it?",

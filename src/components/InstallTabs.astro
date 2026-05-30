@@ -1,5 +1,5 @@
 ---
-// Three install methods. WAI-ARIA tablist semantics so arrow-key navigation
+// Install methods. WAI-ARIA tablist semantics so arrow-key navigation
 // works for keyboard users. The tab-switch and localStorage persistence live
 // in the inline client script at the bottom — Astro static + a tiny island.
 
@@ -20,6 +20,16 @@ const tabs = [
     id: "aur",
     label: "AUR",
     cmd: `yay -S llamastash`,
+  },
+  {
+    id: "windows",
+    label: "Windows",
+    cmd: `irm https://llamastash.dev/install.ps1 | iex`,
+  },
+  {
+    id: "scoop",
+    label: "Scoop",
+    cmd: `scoop bucket add llamastash https://github.com/llamastash/scoop-llamastash; scoop install llamastash`,
   },
   { id: "cargo", label: "Cargo", cmd: `cargo install llamastash` },
 ];
