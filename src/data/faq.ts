@@ -9,7 +9,7 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
   {
     q: "What does LlamaStash actually do?",
-    a: "It's a terminal-native TUI and CLI for launching local models through llama.cpp. It scans the GGUF files you already have, helps you pick the right one for your hardware, starts and supervises llama-server, and exposes a local OpenAI-compatible proxy for tools and agents.",
+    a: "It's a terminal-native TUI and CLI for launching local LLMs. It runs them through llama.cpp — the direct, zero-overhead backend, behind a pluggable backend seam for other engines. It scans the GGUF files you already have, helps you pick the right one for your hardware, starts and supervises llama-server, and exposes a local OpenAI-compatible proxy for tools and agents.",
   },
   {
     q: "Does it send any data to a server?",
