@@ -13,7 +13,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Does it send any data to a server?",
-    a: "Inference traffic stays on your machine. The main runtime surface is local-only: a bearer-token-authed 127.0.0.1 HTTP control plane for the daemon and a separate loopback-only proxy for OpenAI-compatible clients. `init`, `pull`, and parts of `doctor` do use the network when they need to download or verify artifacts, but LlamaStash itself has no telemetry or analytics pipeline.",
+    a: "Inference traffic stays on your machine by default. The main runtime surface is local: a bearer-token-authed 127.0.0.1 HTTP control plane for the daemon, and a loopback OpenAI-compatible proxy for clients. You can opt the proxy onto your LAN (`--proxy-host`), but only behind a bearer key it auto-provisions and enforces — the control plane and llama-server children always stay loopback. `init`, `pull`, and parts of `doctor` use the network to download or verify artifacts, but LlamaStash itself has no telemetry or analytics pipeline.",
   },
   {
     q: "What platforms does it support?",
@@ -33,7 +33,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Can I use LlamaStash with non-GGUF models?",
-    a: "Not in 0.0.2 — llama.cpp is the runtime, and llama.cpp consumes GGUF. Other runtimes (vLLM, mlx-lm) are on the roadmap as opt-in backends once the GGUF + llama.cpp path is solid.",
+    a: "llama.cpp is the default backend and it consumes GGUF, so GGUF is the main path. An experimental, opt-in Lemonade backend adds NPU and multi-engine inference — ONNX, vLLM, and more via a user-installed Lemonade Server — for hardware llama.cpp can't reach, like AMD's XDNA NPU. Native peer backends such as mlx-lm are still on the roadmap behind the same pluggable seam.",
   },
   {
     q: "Can I point agents or editors at it?",
