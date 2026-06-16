@@ -37,7 +37,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "Can I point agents or editors at it?",
-    a: "Yes. LlamaStash ships a local OpenAI-compatible proxy at `http://127.0.0.1:11435/v1` by default, with optional Ollama-compat mode on `11434`. It also ships an AgentSkills bundle under `skills/llamastash/` and a Claude Code plugin manifest for install flows that want a repo-packaged skill.",
+    a: "Yes. LlamaStash ships a local proxy at `http://127.0.0.1:11435` that speaks both the OpenAI API and the Anthropic Messages API, so OpenAI-shape clients and Claude Code (via `ANTHROPIC_BASE_URL`) both attach to it; optional Ollama-compat mode runs on `11434`. `llamastash init` can write the client config for you, and it ships an AgentSkills bundle under `skills/llamastash/` plus a Claude Code plugin manifest.",
   },
   {
     q: "Is it open source?",

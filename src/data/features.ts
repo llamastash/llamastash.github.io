@@ -38,8 +38,8 @@ export const features: Feature[] = [
     accent: "peach",
   },
   {
-    title: "OpenAI + Ollama proxy",
-    body: "A built-in localhost proxy on `127.0.0.1:11435/v1` routes by model name, auto-starts the model you ask for, and can impersonate Ollama on `11434` when you need drop-in compatibility.",
+    title: "OpenAI, Anthropic + Ollama proxy",
+    body: "A built-in localhost proxy on `127.0.0.1:11435` routes by model name and auto-starts the model you ask for. It speaks the OpenAI API, the Anthropic Messages API (`/v1/messages`, so Claude Code attaches via `ANTHROPIC_BASE_URL`), and can impersonate Ollama on `11434` for drop-in compatibility.",
     accent: "yellow",
   },
   {
