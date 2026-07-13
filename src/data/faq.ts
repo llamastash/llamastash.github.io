@@ -9,7 +9,7 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
   {
     q: "What does LlamaStash actually do?",
-    a: "It's a terminal-native TUI and CLI for launching local LLMs. It runs them through llama.cpp — the direct, zero-overhead backend, behind a pluggable backend seam for other engines. It scans the GGUF files you already have, helps you pick the right one for your hardware, starts and supervises llama-server, and exposes a local OpenAI-compatible proxy for tools and agents.",
+    a: "It's a terminal-native TUI and CLI for launching local LLMs. It runs them through llama.cpp, the direct, zero-overhead default backend, with experimental Lemonade (NPU / multi-engine) and ds4 (DeepSeek-V4) backends plugging into the same seam. It scans the GGUF files you already have, helps you pick the right one for your hardware, starts and supervises the server, and exposes a local OpenAI-compatible proxy for tools and agents.",
   },
   {
     q: "Does it send any data to a server?",
@@ -32,8 +32,8 @@ export const faq: FaqEntry[] = [
     a: "The script is served from this site as a content-verified mirror of the asset published with each GitHub Release, with a SHA-256 sidecar verified at deploy time. If you want the most paranoid path, download it, read it, and run it yourself. Or skip the script entirely and use `cargo install llamastash` or `brew install llamastash/llamastash/llamastash`.",
   },
   {
-    q: "Can I use LlamaStash with non-GGUF models?",
-    a: "llama.cpp is the default backend and it consumes GGUF, so GGUF is the main path. An experimental, opt-in Lemonade backend adds NPU and multi-engine inference — ONNX, vLLM, and more via a user-installed Lemonade Server — for hardware llama.cpp can't reach, like AMD's XDNA NPU. Native peer backends such as mlx-lm are still on the roadmap behind the same pluggable seam.",
+    q: "What inference backends does it support?",
+    a: "llama.cpp is the direct, zero-overhead default, and it consumes GGUF, so GGUF is the main path. Two experimental backends plug into the same seam. Lemonade adds NPU and non-GGUF inference (ONNX, vLLM, and more via a user-installed Lemonade Server) for hardware llama.cpp can't reach, like AMD's XDNA NPU. ds4 (DwarfStar) runs antirez's DeepSeek-V4 GGUFs through their purpose-built ds4-server engine, falling back to llama.cpp when ds4-server isn't installed. Both auto-detect when their engine is present. Native peer backends such as mlx-lm are still on the roadmap behind the same seam.",
   },
   {
     q: "Can I point agents or editors at it?",
