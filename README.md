@@ -4,9 +4,9 @@ Source for [llamastash.dev](https://llamastash.dev) — the marketing site for [
 
 ![Logo](https://raw.githubusercontent.com/llamastash/llamastash/main/assets/logo-h.jpg)
 
-**Zero-overhead, terminal-native local-LLM launcher.**
+**Zero-overhead, terminal-native local-LLM manager.**
 
-A fast TUI **and** CLI with init wizard for launching local LLMs. One Rust binary that's a TUI, a CLI, a daemon, and an OpenAI-compatible proxy. [llama.cpp](https://github.com/ggml-org/llama.cpp) is the direct, zero-overhead backend (vs raw `llama-server`), behind a pluggable backend seam so other engines can plug in.
+A fast TUI **and** CLI with init wizard for managing local LLMs. One Rust binary that's a TUI, a CLI, a daemon, and an OpenAI-compatible proxy. [llama.cpp](https://github.com/ggml-org/llama.cpp) is the direct, zero-overhead default backend (vs raw `llama-server`), plus [Lemonade](https://github.com/lemonade-sdk/lemonade) for NPU / multi-engine inference, [vLLM](https://github.com/vllm-project/vllm) for safetensors, and [ds4](https://github.com/antirez/ds4) for DeepSeek-V4.
 
 ## Stack
 
