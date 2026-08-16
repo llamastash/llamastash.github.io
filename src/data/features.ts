@@ -34,7 +34,7 @@ export const features: Feature[] = [
   },
   {
     title: "Multiple inference backends",
-    body: "llama.cpp is the direct, zero-overhead default. Two experimental backends plug into the same seam: Lemonade for NPU and non-GGUF engines (ONNX, vLLM) on AMD Ryzen AI, and ds4 (DwarfStar) for antirez's DeepSeek-V4 GGUFs. Each auto-detects when its engine is installed and stays out of the way when it isn't.",
+    body: "llama.cpp is the direct, zero-overhead default for GGUF. Three experimental backends plug into the same seam: vLLM for the safetensors HuggingFace repos already in your cache, Lemonade for NPU and ONNX inference on AMD Ryzen AI, and ds4 (DwarfStar) for antirez's DeepSeek-V4 GGUFs. Each auto-detects when its engine is installed and stays out of the way when it isn't.",
     accent: "sky",
   },
   {
