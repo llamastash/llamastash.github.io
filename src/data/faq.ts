@@ -9,7 +9,7 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
   {
     q: "What does LlamaStash actually do?",
-    a: "It's a terminal-native TUI and CLI for managing local LLMs. It runs them through llama.cpp, the direct, zero-overhead default backend, with experimental vLLM (safetensors), Lemonade (NPU / multi-engine) and ds4 (DeepSeek-V4) backends plugging into the same seam. It scans the models you already have, helps you pick the right one for your hardware, starts and supervises the server, and exposes a local OpenAI-compatible proxy for tools and agents.",
+    a: "It's a terminal-native TUI and CLI for managing local LLMs. It runs them through llama.cpp, the direct, zero-overhead default backend, with experimental vLLM and SGLang (safetensors), Lemonade (NPU / multi-engine) and ds4 (DeepSeek-V4) backends plugging into the same seam. It scans the models you already have, helps you pick the right one for your hardware, starts and supervises the server, and exposes a local OpenAI-compatible proxy for tools and agents.",
   },
   {
     q: "Does it send any data to a server?",
@@ -33,7 +33,7 @@ export const faq: FaqEntry[] = [
   },
   {
     q: "What inference backends does it support?",
-    a: "llama.cpp is the direct, zero-overhead default, and it consumes GGUF, so GGUF is the main path. Three experimental backends plug into the same seam. vLLM covers the other half of your cache: safetensors HuggingFace repos are discovered and launched through `vllm serve`, so a repo that was invisible before shows up in `list` and answers on the proxy. Lemonade adds NPU and ONNX inference for hardware llama.cpp can't reach, like AMD's XDNA NPU. ds4 (DwarfStar) runs antirez's DeepSeek-V4 GGUFs through their purpose-built ds4-server engine, falling back to llama.cpp when ds4-server isn't installed. Each auto-detects when its engine is present, and none of them compete for GGUF routing. Native peer backends such as mlx-lm are still on the roadmap behind the same seam.",
+    a: "llama.cpp is the direct, zero-overhead default, and it consumes GGUF, so GGUF is the main path. Four experimental backends plug into the same seam. vLLM and SGLang cover the other half of your cache: safetensors HuggingFace repos are discovered and launched through `vllm serve` or `sglang serve`, so a repo that was invisible before shows up in `list` and answers on the proxy. With both engines installed, a repo lists both, `auto` picks vLLM and `--backend sglang` picks SGLang. Lemonade adds NPU and ONNX inference for hardware llama.cpp can't reach, like AMD's XDNA NPU. ds4 (DwarfStar) runs antirez's DeepSeek-V4 GGUFs through their purpose-built ds4-server engine, falling back to llama.cpp when ds4-server isn't installed. Each auto-detects when its engine is present, and none of them compete for GGUF routing. Native peer backends such as mlx-lm are still on the roadmap behind the same seam.",
   },
   {
     q: "Can I point agents or editors at it?",
