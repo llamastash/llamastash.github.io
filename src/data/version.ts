@@ -1,6 +1,6 @@
 // Bumped on every release by .github/workflows/release.yml in the main
 // repo. Do not edit by hand.
 
-export const VERSION = "0.7.0";
-export const TAG = "v0.7.0";
-export const RELEASED_AT = "2026-10-13";
+export const VERSION = "0.8.0";
+export const TAG = "v0.8.0";
+export const RELEASED_AT = "2026-10-17";
