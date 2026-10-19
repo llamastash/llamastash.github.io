@@ -1,4 +1,4 @@
-# Source: github.com/llamastash/llamastash@v0.9.0/scripts/install.sh
+# Source: github.com/llamastash/llamastash@v0.9.1/scripts/install.sh
 # SHA-256 verified by .github/workflows/release.yml on 2026-10-19.
 #!/bin/sh
 #
