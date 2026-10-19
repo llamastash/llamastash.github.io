@@ -1,5 +1,5 @@
-# Source: github.com/llamastash/llamastash@v0.8.0/scripts/install.ps1
-# SHA-256 verified by .github/workflows/release.yml on 2026-10-17.
+# Source: github.com/llamastash/llamastash@v0.9.0/scripts/install.ps1
+# SHA-256 verified by .github/workflows/release.yml on 2026-10-19.
 # install.ps1 — install llamastash from GitHub Releases on Windows.
 #
 # Usage:
