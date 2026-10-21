@@ -4,9 +4,9 @@ Source for [llamastash.dev](https://llamastash.dev) — the marketing site for [
 
 ![Logo](https://raw.githubusercontent.com/llamastash/llamastash/main/assets/logo-h.jpg)
 
-**Zero-overhead, terminal-native local-LLM manager.**
+**Zero-overhead, terminal-native local-LLM orchestrator. Run any engine, any model via the same proxy.**
 
-A fast TUI **and** CLI with init wizard for managing local LLMs. One Rust binary that's a TUI, a CLI, a daemon, and an OpenAI-compatible proxy. [llama.cpp](https://github.com/ggml-org/llama.cpp) is the direct, zero-overhead default backend (vs raw `llama-server`), plus [Lemonade](https://github.com/lemonade-sdk/lemonade) for NPU / multi-engine inference, [vLLM](https://github.com/vllm-project/vllm) and [SGLang](https://github.com/sgl-project/sglang) for safetensors, and a generic backend that runs any other OpenAI-compatible server you declare in config, like [ds4](https://github.com/antirez/ds4) for DeepSeek-V4.
+A fast TUI **and** CLI with init wizard for running local LLMs. One Rust binary that's a TUI, a CLI, a daemon, and an OpenAI-compatible proxy. [llama.cpp](https://github.com/ggml-org/llama.cpp) is the direct, zero-overhead default backend (vs raw `llama-server`), plus [Lemonade](https://github.com/lemonade-sdk/lemonade) for NPU / multi-engine inference, [vLLM](https://github.com/vllm-project/vllm) and [SGLang](https://github.com/sgl-project/sglang) for safetensors, and a generic backend that runs any other OpenAI-compatible server you declare in config, like [ds4](https://github.com/antirez/ds4) for DeepSeek-V4.
 
 ## Stack
 

@@ -9,7 +9,7 @@ export interface FaqEntry {
 export const faq: FaqEntry[] = [
   {
     q: "What does LlamaStash actually do?",
-    a: "It's a terminal-native TUI and CLI for managing local LLMs. It runs them through llama.cpp, the direct, zero-overhead default backend, with experimental vLLM and SGLang (safetensors) and Lemonade (NPU / multi-engine) backends plugging into the same seam, plus a generic backend for any other OpenAI-compatible server you declare in config, like ds4 for DeepSeek-V4. It scans the models you already have, helps you pick the right one for your hardware, starts and supervises the server, and exposes a local OpenAI-compatible proxy for tools and agents.",
+    a: "It's a zero-overhead, terminal-native local-LLM orchestrator: a TUI and CLI that runs any engine and any model behind the same OpenAI-compatible proxy. llama.cpp is the direct, zero-overhead default backend, with experimental vLLM and SGLang (safetensors) and Lemonade (NPU / multi-engine) backends plugging into the same seam, plus a generic backend for any other OpenAI-compatible server you declare in config, like ds4 for DeepSeek-V4. It scans the models you already have, helps you pick the right one for your hardware, starts and supervises the server, and exposes a local OpenAI-compatible proxy for tools and agents.",
   },
   {
     q: "Does it send any data to a server?",
