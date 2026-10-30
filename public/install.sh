@@ -1,5 +1,5 @@
-# Source: github.com/llamastash/llamastash@v0.10.0/scripts/install.sh
-# SHA-256 verified by .github/workflows/release.yml on 2026-10-26.
+# Source: github.com/llamastash/llamastash@v0.10.1/scripts/install.sh
+# SHA-256 verified by .github/workflows/release.yml on 2026-10-30.
 #!/bin/sh
 #
 # install.sh — install llamastash from GitHub Releases.
